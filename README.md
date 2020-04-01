@@ -1,5 +1,7 @@
-# RPGItems-wiki-zh_CN
+# 主页
 
-RPGItems wiki中文文档
+欢迎来到 **RPGItems** 中文WIKI
 
-这里只是用来临时储存文件的位置
+**RPGItems** 是一款因各类道具制作需求而诞生的Spigot插件，它具有多种独特的系统来帮助你制作高度自定义的道具。
+
+如果您希望使用这款插件，请阅读[安装与配置](installation.md)
