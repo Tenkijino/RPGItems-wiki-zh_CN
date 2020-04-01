@@ -20,7 +20,7 @@
 /rpgitem list [page] <param>
 ```
 
-附加参数值可以用于筛选。
+`<param>`附加参数值可以用于筛选。
 
 * `display` - 道具的展示名
 * `name` - RPGItem数据库中的物品名
@@ -53,27 +53,27 @@
 /rpgitem give mysword
 ```
 
-## Load from file
+## 从yml文件中读取道具
 
 ```
 /rpgitem loadfile mysword-item.yml
 ```
 
-Items are stored in `items/` directory under RPGItems plugin directory.
+各个道具储存在RPGItems文件夹下的`items\`文件夹内
 
-## Reload item from file
+## 从文件中重载道具
 
 ```
 /rpgitem reloaditem mysword
 ```
 
-## Reload plugin
+## 重载RPGItems插件
 
 ```
 /rpgitem reload
 ```
 
-## Import and Export
+## 导入与导出道具
 
 ```
 /rpgitem import [GIST|URL] [value]
@@ -83,19 +83,19 @@ Items are stored in `items/` directory under RPGItems plugin directory.
 /rpgitem export mysword
 ```
 
-* Note: You need Gist API key to use this feature.
+* 你需要拥有一个Gist API Key才可以使用这个功能
 
-## Clone
+## 复制道具
 
 ```
 /rpgitem clone mysword mynewsword
 ```
 
-## Dump
+## 转储道具文件
 
 ```
 /rpgitem dump mysword
 ```
 
-Will print raw item configuration content in YAML format for further inspection.
+生成一个记录了道具原始设置的YAML文件，用于检查
 
