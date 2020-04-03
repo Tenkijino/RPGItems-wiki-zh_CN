@@ -1,15 +1,15 @@
 # 制作道具
 
-## 道具展示名设置
+## 道具展示名设置（Display）
 
 ```
 /rpgitem display mysword `&aHero Sword`
 ```
 
-* 如果道具展示名中包含空格，你可以使用 \`\` 来让它生效。
-* 你也可以使用 `&` 符号来对道具展示名使用样式代码。
+* 如果道具展示名中包含空格，你可以使用反引号 `` ` ``将文本括起来
+* 如果需要在道具展示名中使用样式代码，请使用`&`符号。
 
-## 道具模型设置
+## 道具模型设置（Item）
 
 ```
 /rpgitem item mysword [material] <option>
@@ -43,29 +43,29 @@
 /rpgitem customitemmodel mysword
 ```
 
-## 道具lore设置
+## 道具描述设置（Lore）
 
-添加一行lore
+添加一行描述
 
 ```
 /rpgitem description [item] add `&9Blue description line`
 ```
 
-设置某一行lore
+设置某一行描述
 
 ```
 /rpgitem description [item] set 1 `&aGreen description line`
 ```
 
-* 注意：lore的行数从0开始。
+* 注意：描述的行数从0开始。
 
-插入一行lore
+插入一行描述
 
 ```
 /rpgitem description insert 1 `&cRed inserted description`
 ```
 
-移除一行lore
+移除一行描述
 
 ```
 /rpgitem description remove 0
@@ -81,7 +81,7 @@
 /rpgitem togglearmorlore mysword
 ```
 
-## 道具附魔设置
+## 道具附魔设置（Enchantment）
 
 你可以使用以下命令来控制道具是否允许被附魔：
 
