@@ -145,7 +145,7 @@
 /rpgitem armour myhelmet 20
 ```
 
-仅减少20%的伤害
+以上命令仅减少20%的伤害。
 
 穿戴多个防护道具的伤害计算为 `damage = damage * helmet.armor * chestplate.armor * leggings.armor * boots.armor`
 
