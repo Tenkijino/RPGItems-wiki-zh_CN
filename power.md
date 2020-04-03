@@ -249,13 +249,13 @@
 
 当你点击了鼠标左键，只有1和4会被触发执行，并且是在同一个Tick中执行的。
 
-Now if you want to cost 1 durability on each left click use, with 20 ticks cooldown and do not wish to show the duplicated cooldown message, you can add PowerDummy at first place, and set `cooldown:20 cooldownKey:left cooldownResult:ABORT cost:1 showCDWarning:false triggers:LEFT_CLICK`. You should also set PowerProjectile and PowerParticle's `cost` and `cooldown` to 0, indicating you do not need them and only using PowerDummy to control everything.
+如果你想要在每次点击鼠标左键时会消耗1耐久，冷却时间20Ticks并且不希望显示冷却消息提示, 那么你可以把一个空技能放置在技能顺位的第一位并设置空技能为所示参数：`cooldown:20 cooldownKey:left cooldownResult:ABORT cost:1 showCDWarning:false triggers:LEFT_CLICK`。同时你也需要设置PowerProjectile与PowerParticle的耐久消耗`cost`与冷却时间`cooldown`为0，因为你不再需要它们，只需要用空技能来控制所有的技能。
 
-RPGitem will first check PowerDummy, and if it's in cooldown then abort the whole execution process, which means projectile and particle powers will not be activated. If it's not cooling down and all conditions (if any) are met, cost 1 then continue with power execution (fire a projectile and play particle).
+点击鼠标左键后，RPGItems会首先检查空技能，如果它还在冷却时间内将会中止后续技能的执行，也就是说PowerProjectile与PowerParticle不会被执行。当它不在冷却时间内且满足所有条件（如果有的话）时，就会消耗1耐久并执行后续技能（发射弹射物与生成粒子）。
 
-Similarly, if you set `costResult` to `ABORT`, when the item durability less than its lower bound, the power execution will be aborted.
+同样，如果你将 `costResult`设置为`ABORT`，当道具耐久低于耐久下界时，技能也会被中止。
 
-Please note dummy power options is effective only with correct trigger. If you set dummy with `RIGHT_CLICK` trigger, it will not affect any power with triggers other than `RIGHT_CLICK`.
+请注意空技能的使用仅适用于对应的触发，如果你将空技能的触发设置为`RIGHT_CLICK`，它的执行不会影响到其他任何触发为`RIGHT_CLICK`之外的技能。
 
 ## 经济（Economy）
 
@@ -310,7 +310,7 @@ Please note dummy power options is effective only with correct trigger. If you s
 
 击中目标头部造成额外伤害。
 
-## 冰（Ice）
+## 冰冻（Ice）
 
 发射冰块并形成一个冰牢。
 
@@ -362,17 +362,17 @@ Please note dummy power options is effective only with correct trigger. If you s
 
 发射弹射物，弹射物的参数有多种选项。
 
-- `isCone` if the projectile fires in a cone. Defaults to `false`
-- `gravity` if the projectile affected by gravity. Defaults to `true`
-- `range` cone angle from your direction
-- `amount` amount of projectile in a single run
-- `speed` projectile flying speed
-- `burstCount` how many projectiles will be fired
-- `burstInterval` ticks between next burst run
-- `setFireballDirection` fireball will not float if set to `true`
-- `yield` may cause explosion, defaults to `false`
-- `isIncendiary` may cause fire, defaults to `false`
-- `projectileType` type of projectile, can be
+- `isCone` 弹射物是否离散发射，默认设置为`false`
+- `gravity` 弹射物是否受重力影响，默认设置为`true`
+- `range` 发射的离散角度
+- `amount` 每一波发射多少弹射物
+- `speed` 弹射物飞行速度
+- `burstCount` 发射多少波数
+- `burstInterval` 下一波发射前的间隔时间
+- `setFireballDirection` 火焰弹的轨迹是否会浮动，默认设置为`true`
+- `yield` 爆炸物的爆炸半径
+- `isIncendiary` 是否会点燃，默认设置为`false`
+- `projectileType` 弹射物类型，可以是下列内容：
   - `arrow`
   - `snowball`
   - `fireball`
@@ -382,12 +382,12 @@ Please note dummy power options is effective only with correct trigger. If you s
   - `dragonfireball`
   - `trident`
   - `skull`
-- `suppressArrow` Cancels arrow when firing from bow, but arrow will still be consumed
-- `applyForce` apply bow force for arrow and fireball, affects speed
-- `firingLocation` Can be `SELF` or `TARGET`
-- `firingR` Polar coordinates parameter
-- `firingTheta` Polar coordinates parameter
-- `firingPhi` Polar coordinates parameter
+- `suppressArrow` 取消箭矢的发射但仍然消耗箭矢
+- `applyForce` 是否应用弓的拉伸力度到箭矢与火焰弹上，会影响到飞行速度
+- `firingLocation` 发射位置，可以是自身`SELF`或是目标`TARGET`
+- `firingR` 极坐标参数
+- `firingTheta` 极坐标参数
+- `firingPhi` 极坐标参数
 - `firingRange`
 - `castOff`
 
