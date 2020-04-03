@@ -153,7 +153,7 @@
 
 - `percentage` 伤害增加的百分比量
 - `speedPercentage` 根据速度增加伤害增加的百分比量。
-- `setBaseDamage` 是否设为基础伤害（伤害增益可叠加）, 不然将会使用道具属性中的伤害量
+- `setBaseDamage` 是否将动态伤害设为基础伤害（伤害增益可叠加）, 不然将会使用道具属性中的伤害量
 - `cap` 最大伤害上限
 
 ## 命令（Command）
@@ -207,7 +207,7 @@
 - `backstabchance` 背刺概率，N%
 - `factor` 暴击伤害倍率
 - `backstabFactor` 背刺伤害倍率
-- `setBaseDamage` 是否设为基础伤害（伤害增益可叠加）, 不然将会使用道具属性中的伤害量
+- `setBaseDamage` 是否将动态伤害设为基础伤害（伤害增益可叠加）, 不然将会使用道具属性中的伤害量
 
 ## 死亡命令（DeathCommand）
 
@@ -233,21 +233,21 @@
 - `costbyDamage` 根据伤害消耗耐久值
 - `cooldownKey` 当有多个空技能时,设定一个唯一的string字符串来让冷却时间互相独立
 - `successResult` 在空技能成功执行后的动作，默认值为`OK`，用于继续执行下一个技能
-- `costResult` Action after cost. Defaults to `COST` which deals the cost and continue with next power. Set to `ABORT` to break and abort the whole process, `OK` to ignore the cost and continue with next power.
-- `cooldownResult` Action after cooldown. Defaults to `COOLDOWN` which break execution of dummy but continue with next power. Set `ABORT` to break and abort the whole process, `OK` to ignore cooldown and continue with next power.
+- `costResult`在耐久消耗后执行的动作。默认设置为`COST`，在消耗耐久后继续下一个技能；`ABORT`，中断并中止整个技能进程；`OK`，无视耐久消耗并继续下一个技能。
+- `cooldownResult`冷却后执行的动作。默认设置为`COOLDOWN`，中断空技能并继续下一个技能；`ABORT`中断并中止整个技能进程；`OK`，无视冷却时间并继续下一个技能。
 - `showCDwarning` 如果你不希望显示任何冷却信息，将它设置为`false`
 - `globalCooldown` 设置全体的冷却时间
 
 **使用空技能来禁用冷却信息的显示并统一控制技能冷却时间与耐久消耗**
 
-You should already acknowledge that RPGitems execute powers based on trigger, like `RIGHT_CLICK` or `LEFT_CLICK` and activate power one by one in a pitfall. So if you have an item with a list of powers like:
+你应当知道了RPGItems中的道具技能是需要触发执行的, 比如`RIGHT_CLICK`或是`LEFT_CLICK`然后根据顺序来一个一个的执行。所以如果你的道具设置的技能如同以下这样：
 
 1. PowerProjectile, trigger `LEFT_CLICK`
 2. PowerBeam, trigger `RIGHT_CLICK`
 3. PowerSound, trigger `RIGHT_CLICK`
 4. PowerParticle, trigger `LEFT_CLICK`
 
-When you do left click, only 1 and 4 will be activated. The item firstly shoot a projectile and then play a particle, but in a single tick.
+当你点击了鼠标左键，只有1和4会被触发执行，并且是在同一个Tick中执行的。
 
 Now if you want to cost 1 durability on each left click use, with 20 ticks cooldown and do not wish to show the duplicated cooldown message, you can add PowerDummy at first place, and set `cooldown:20 cooldownKey:left cooldownResult:ABORT cost:1 showCDWarning:false triggers:LEFT_CLICK`. You should also set PowerProjectile and PowerParticle's `cost` and `cooldown` to 0, indicating you do not need them and only using PowerDummy to control everything.
 
@@ -265,10 +265,10 @@ Please note dummy power options is effective only with correct trigger. If you s
 
 让附魔来增强伤害量。
 
-- `mode` Can be `ADDITION` or `MULTIPLICATION`
-- `amountPerLevel` Boost percentage per enchant level, 1 = 100%
-- `enchantmentType` See https://hub.spigotmc.org/javadocs/spigot/org/bukkit/enchantments/Enchantment.html
-- `setBaseDamage` Set to true to use dynamic damage as base, otherwise use damage property in item config
+- `mode`可以是增加量`ADDITION`或是倍率增加`MULTIPLICATION`
+- `amountPerLevel`每一附魔等级增加百分比，1 = 100%
+- `enchantmentType`详见：https://hub.spigotmc.org/javadocs/spigot/org/bukkit/enchantments/Enchantment.html
+- `setBaseDamage`是否将动态伤害设为基础伤害（伤害增益可叠加）, 不然将会使用道具属性中的伤害量
 
 ## 动态伤害（EvalDamage）
 
@@ -403,21 +403,21 @@ Please note dummy power options is effective only with correct trigger. If you s
 
 造成无视护甲的真实伤害。
 
-## 修复（Repair）
+## 修理（Repair）
 
-Consume material to restore (or cost) durability.
+消耗材料来回复或是消耗道具耐久。
 
-- `durability` Durability restored (or cost) per each repair material
-- `display` Message displayed in lore
-- `material` Repair material. Can be `HAND` to use item hold in mainhand.
-- `isSneak` Require sneak to trigger
-- `mode` Can be `DEFAULT`, `ALLOW_OVER` and `ALWAYS`
-- `allowBreak` defaults to `true`
-- `abortOnSuccess` abort and break execution after successfully triggered (repaired)
-- `abortOnFailure` abort and break execution after failed to repair (e.g., no material)
-- `customMessage` Message to display in chat
-- `amount` Maximum material amount to consume in each trigger
-- `showFailMsg` Show repair failed message or not. Default to `true`
+- `durability` 每一个修复材料会回复或是消耗的耐久量
+- `display` 在道具lore中展示的信息。
+- `material` 用与修复的材料。你可以使用`HAND`来将主手中持有的物品作为修复材料。
+- `isSneak` 是否在潜行状态时才能触发。
+- `mode` 可以是默认`DEFAULT`，允许超出上限`ALLOW_OVER`或是总是可以修复`ALWAYS`。
+- `allowBreak` 是否会把道具修爆，默认设置为`true`
+- `abortOnSuccess` 是否在修理成功后中止后续技能
+- `abortOnFailure` 是否在修理失败后中止后续技能(比如没有材料了)
+- `customMessage` 在聊天栏中展示的信息
+- `amount` 每次触发时会消耗的最大材料量
+- `showFailMsg` 是否显示修理失败后的信息。默认设置为`true`
 
 ## 拯救（Rescue）
 
