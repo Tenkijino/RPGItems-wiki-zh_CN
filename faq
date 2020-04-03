@@ -12,6 +12,6 @@
 
 如果想要自定义语言与文字,复制`zh_CN.template.yml`到`zh_CN.custom.yml`文件中并在新文件中添加或修改语言条目。
 
-如果你收到了形似`MISSING_LANG`的报错，是因为没有对应的语言条目。你可以使用上述的方法来添加语言条目。
+如果你收到了类似`MISSING_LANG`的报错，是因为没有对应的语言条目。你可以使用上述的方法来添加语言条目。
 
 请帮助我们更新语言文件！如果你感兴趣的话，请Fork [our repo](https://github.com/NyaaCat/RPGItems-reloaded)并编辑文件`RPGItems-reloaded/src/main/resources/lang/zh_CN.yml`。
