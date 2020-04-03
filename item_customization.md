@@ -1,6 +1,6 @@
 # 制作道具
 
-## 道具展示名设置（Display）
+## 道具展示名设置（Display Name）
 
 ```
 /rpgitem display mysword `&aHero Sword`
@@ -9,7 +9,7 @@
 * 如果道具展示名中包含空格，你可以使用反引号 `` ` ``将文本括起来
 * 如果需要在道具展示名中使用样式代码，请使用`&`符号。
 
-## 道具模型设置（Item）
+## 道具模型设置（Item Model）
 
 ```
 /rpgitem item mysword [material] <option>
@@ -105,7 +105,7 @@
 /rpgitem enchantment mysword clear
 ```
 
-## 道具flags设置
+## 道具设置（Flags）
 
 ```
 /rpgitem additemflag mysword HIDE_ATTRIBUTES
@@ -115,7 +115,7 @@
 /rpgitems removeitemflag mysword HIDE_ENCHANTS
 ```
 
-## 道具伤害设置
+## 道具伤害设置（Damage）
 
 ```
 /rpgitem damage mysword 10
@@ -139,7 +139,7 @@
 
 伤害种类可以使用条件中的任意String。
 
-## 道具护甲设置
+## 道具护甲设置（Armour）
 
 ```
 /rpgitem armour myhelmet 20
@@ -155,7 +155,7 @@
 
 护甲伤害将会使用表达式计算并且略过其他的处理 (比如附魔等...)
 
-## 道具耐久系统
+## 道具耐久系统（Durability）
 
 ```
 /rpgitem durability mysword 1001
@@ -189,7 +189,7 @@
 
 控制道具耐久条的开启与关闭
 
-## 道具权限设置
+## 道具权限设置（Permission）
 
 ```
 /rpgitem permission mysword rpgitem.use.mysword
